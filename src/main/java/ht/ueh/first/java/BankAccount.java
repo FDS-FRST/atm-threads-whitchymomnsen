@@ -24,8 +24,7 @@ public class BankAccount {
             throw new InvalidAmountException("Montant invalide : " + amount);
         }
         if (balance < amount) {
-            throw new InsufficientFundsException(
-                    "Fonds insuffisants (solde=" + balance + ")");
+            throw new InsufficientFundsException("Fonds insuffisants (solde=" + balance + ")");
         }
         this.balance -= amount;
     }
