@@ -13,22 +13,30 @@ public class BankAccount {
     }
 
     public synchronized void deposit(double amount) {
-        if (amount <= 0) {
-            throw new InvalidAmountException("Montant invalide : " + amount);
+        try {
+            if (amount <= 0) {
+                throw new InvalidAmountException("Montant invalide : " + amount);
+            }
+            this.balance += amount;
+        }catch (InvalidAmountException e) {
+            System.out.println(e.getMessage());
         }
-        System.out.println("Retrait de '" + amount + " HTG' effectué");
-        this.balance += amount;
     }
 
     public synchronized void withdraw(double amount) {
-        if (amount <= 0) {
-            throw new InvalidAmountException("Montant invalide : " + amount);
+        try {
+            if (amount <= 0) {
+                throw new InvalidAmountException("Montant invalide : " + amount);
+            }
+            if (balance < amount) {
+                throw new InsufficientFundsException("Fonds insuffisants (solde=" + balance + ")");
+            }
+            this.balance -= amount;
+        }catch (InvalidAmountException e) {
+            System.out.println(e.getMessage());;
+        }catch (InsufficientFundsException e){
+            System.out.println(e.getMessage());
         }
-        if (balance < amount) {
-            throw new InsufficientFundsException("Fonds insuffisants (solde=" + balance + ")");
-        }
-        this.balance -= amount;
-        System.out.println("Dépot de '" + amount + " HTG' effectué ");
     }
 
     public double getBalance() {
