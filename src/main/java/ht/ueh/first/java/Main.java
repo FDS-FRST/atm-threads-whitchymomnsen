@@ -26,7 +26,7 @@ public class Main {
 //            Thread client = new Thread(() -> {
 //                for (int j = 0; j < 5; j++) {
 //                    int choice = random.nextInt(3);
-//                    double amount = random.nextInt(500) + 1;
+//                    double amount = random.nextInt(5000) + 1;
 //
 //                    try {
 //                        switch (choice) {
@@ -46,7 +46,7 @@ public class Main {
 //            client.start();
 //        }
 
-        account.withdraw(5000);
+        account.withdraw(7000);
         account.withdraw(7000);
         account.deposit(-5000);
         account.getBalance();
