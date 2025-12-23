@@ -16,6 +16,7 @@ public class BankAccount {
         if (amount <= 0) {
             throw new InvalidAmountException("Montant invalide : " + amount);
         }
+        System.out.println("Retrait de '" + amount + " HTG' effectué");
         this.balance += amount;
     }
 
@@ -27,6 +28,7 @@ public class BankAccount {
             throw new InsufficientFundsException("Fonds insuffisants (solde=" + balance + ")");
         }
         this.balance -= amount;
+        System.out.println("Dépot de '" + amount + " HTG' effectué ");
     }
 
     public double getBalance() {
